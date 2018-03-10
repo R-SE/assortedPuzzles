@@ -80,3 +80,55 @@ function makeChess(num) {
 makeChess(10);
 
 // -----------------------------------------------------------------------------------------------
+// 4. Write a function min that takes two arguments and returns their minimum.
+// console.log(min(0, 10));
+// // → 0
+// console.log(min(0, -10));
+// // → -10
+
+function min(num1, num2) {
+  return num1 < num2 ? num1 : num2;
+}
+
+console.log(min(10, 100));
+
+// -----------------------------------------------------------------------------------------------
+// 5. We’ve seen that % (the remainder operator) can be used to test whether a number is even or odd by using % 2 to see whether it’s divisible by two. Here’s another way to define whether a positive whole number is even or odd:
+
+// Zero is even.
+// One is odd.
+// For any other number N, its evenness is the same as N - 2.
+
+// Define a recursive function isEven corresponding to this description. The function should accept a single parameter (a positive, whole number).
+
+function recursiveIsEven(num) {
+  if (num >= 0) {
+    return num === 0 ? "even" : num === 1 ? "odd" : recursiveIsEven(num - 2);
+  } else {
+    console.log("Please enter only positive whole numbers");
+  }
+}
+
+recursiveIsEven(11);
+recursiveIsEven(-1);
+
+// -----------------------------------------------------------------------------------------------
+// 6a. Write a function countBs that takes a string as its only argument and returns a number that indicates how many uppercase “B” characters there are in the string.
+
+function countBs(string) {
+  var counter = 0;
+  for (let i = 0; i < string.length; i++) {
+    string.charAt(i) === "B" ? counter++ : counter;
+  }
+  return counter;
+}
+
+// 6b. Next, write a function called countChar that behaves like countBs, except it takes a second argument that indicates the character that is to be counted (rather than counting only uppercase “B” characters). Rewrite countBs to make use of this new function.
+
+function countChar(string, char) {
+  var counter = 0;
+  for (let i = 0; i < string.length; i++) {
+    string.charAt(i) === char ? counter++ : counter;
+  }
+  return counter;
+}
