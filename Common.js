@@ -38,6 +38,6 @@ function iterativeFactorial(n) {
   return factorial;
 }
 
-function recursiveFactorial(n) {
-  return n < 2 ? n : recursiveFactorial(n - 1) * n;
+function factorial(n) {
+  return n === 0 ? 1 : factorial(n - 1) * n;
 }
