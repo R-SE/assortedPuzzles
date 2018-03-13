@@ -62,3 +62,42 @@ function maxValue(obj) {        // given an object, returns the key with the hig
           .keys(obj)
           .reduce((a, b) => (obj[b] > obj[a]) ? b : a);
 }
+
+function condensedFizzBuzz(n) {   // classic fizzbuzz problem logging from 1 to n
+  for (let i = 1; i <= n; i++) {
+    let str = '';
+    if (i % 3 === 0) {str += 'fizz'};
+    if (i % 5 === 0) {str += 'buzz'};
+    console.log(str || i);
+  }
+}
+
+function ternaryFizzBuzz(n) {     // nested ternary
+  for (let i = 1; i <= n; i++) {
+    let f = i % 3 === 0,
+        b = i % 5 === 0,
+        msg = f & b ? 'fizzbuzz' : f ? 'fizz' : b ? 'buzz' : i;
+    console.log(msg);
+  }
+}
+
+function chunk(array, size) {  // iterative solution checking each element
+  var chunked = [];
+  for (var ele of array) {
+    let last = chunked[chunked.length - 1];
+    if (!last || last.length === size) {          // if there is no chunk (i.e. empty array) or chunk is filled
+      chunked.push([ele]);                         // push in a newly created chunk with the element
+    } else {
+      last.push(ele);                           // otherwise push the element into the existing chunk
+    }
+  }
+  return chunked;
+}
+
+function chunk(array, size) {   // slicing solution for making nested arrays of given size from given array
+  var chunk = [];
+  for (let i = 0; i < array.length; i += size) {
+    chunk.push(array.slice(i, i + size));
+  }
+  return chunk;
+}
