@@ -1,4 +1,4 @@
-function reverseString(str) {
+function reverse(str) {
   return str.split("")
             .reverse()
             .join("");
@@ -29,6 +29,13 @@ function findPairForSum(integers, target) {
   return pair;
 }
 
+function reverseInt(n) {
+  return Math.sign(n) * parseInt(n          // or recursively first line -> return n < 0 ? -reverseInt(-n) :  parseInt(n
+                            .toString()
+                            .split('')
+                            .reverse()
+                            .join(''));
+}
 
 function iterativeFactorial(n) {
   var factorial = 1;
@@ -40,4 +47,18 @@ function iterativeFactorial(n) {
 
 function factorial(n) {
   return n === 0 ? 1 : factorial(n - 1) * n;
+}
+
+function countChars(str) {          // returns an object with a count of each char in key-value pairs
+  var chars = {};
+  for (let char of str) {
+    chars[char] = chars[char]++ || 1;
+  }
+  return chars;
+}
+
+function maxValue(obj) {        // given an object, returns the key with the highest integer value
+  return Object
+          .keys(obj)
+          .reduce((a, b) => (obj[b] > obj[a]) ? b : a);
 }
