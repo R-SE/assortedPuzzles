@@ -63,6 +63,22 @@ function maxValue(obj) {        // given an object, returns the key with the hig
           .reduce((a, b) => (obj[b] > obj[a]) ? b : a);
 }
 
+function palindrome(str) {    // while-looped palindrome-checker
+  let left = -1;
+  let right = str.length;
+  while(left++ <= right--) {
+    if(str[left] !== str[right]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function palindrome(str) {  // creating a reversed string using reduce
+  var reversed = str.split('').reduce((acc, char) => char + acc, '');
+  return reversed === str;
+}
+
 function condensedFizzBuzz(n) {   // classic fizzbuzz problem logging from 1 to n
   for (let i = 1; i <= n; i++) {
     let str = '';
@@ -100,4 +116,85 @@ function chunk(array, size) {   // slicing solution for making nested arrays of 
     chunk.push(array.slice(i, i + size));
   }
   return chunk;
+}
+
+function clean(str) {       // helper function for anagram function
+  return str
+  .replace(/[^\w]/g, '')    // regex replaces all non-alpha chars
+  .toLowerCase()
+  .split('')
+  .sort()
+  .join('');
+}
+function anagrams(str1, str2) {
+  return clean(str1) === clean(str2);
+}
+
+function pyramid(n) {                     // building a pyramid of height n
+  for(let row = 1; row <= n; row++) {
+    var spaces = ' '.repeat(n - row);
+    var hashes = '#'.repeat(row * 2 - 1);
+    console.log(spaces + hashes + spaces);
+  }
+}
+
+function vowels(str) {                        // working with regex
+  const matches = str.match(/[aeiou]/gi);
+  return matches ? matches.length : 0;
+}
+
+function matrix(n) {       // creating a NxN spiral matrix by "removing" the outer rows/cols when finished
+  var results = [];
+  for (let i = 0; i < n; i++) {
+    results.push([]);
+  }
+
+  let counter = 1;
+  let topEdge = 0;
+  let rightEdge = n - 1;
+  let botEdge = n - 1;
+  let leftEdge = 0;
+
+  while (topEdge <= botEdge && leftEdge <= rightEdge) {
+    for (let i = leftEdge; i <= rightEdge; i++) {
+      results[topEdge][i] = counter;
+      counter++;
+    }
+    topEdge++;
+    for (let i = topEdge; i <= botEdge; i++) {
+      results[i][rightEdge] = counter;
+      counter++;
+    }
+    rightEdge--;
+    for (let i = rightEdge; i >= leftEdge; i--) {
+      results[botEdge][i] = counter;
+      counter++;
+    }
+    botEdge--;
+    for (let i = botEdge; i >= topEdge; i--) {
+      results[i][leftEdge] = counter;
+      counter++;
+    }
+    leftEdge++;
+  }
+  return results;
+}
+
+function fibRecursive(n) {
+  if (n < 2) {
+    return n;
+  }
+  return fib(n - 2) + fib(n - 1);
+}
+
+function memoize(fn) {
+  const cache = {};
+  return function(...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const val = fn.apply(this, args);
+    cache[args] = val;
+    return val;
+  }
 }
