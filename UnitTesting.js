@@ -1,7 +1,7 @@
 // basic assertion
 function assertEqual(actual, expected, testName) {
   if (actual === expected) {
-    console.log('passed');
+    console.log(`passed [${testName}]`);
   } else {
     console.log(`FAILED [${testName}] Expected "${expected}", but got "${actual}"`);
   }
@@ -16,7 +16,7 @@ function assertArraysEqual(actual, expected, testName) {
   });
   var areEqualLength = (actual.length === expected.length);
   if (areEqualLength && areEqualValues) {
-     console.log('passed');
+     console.log(`passed [${testName}]`);
    } else {
      console.log(`FAILED [${testName}] Expected "${expected}", but got "${actual}"`);
    }
@@ -27,7 +27,7 @@ function assertObjectsEqual(actual, expected, testName) {
   actual = JSON.stringify(actual);
   expected = JSON.stringify(expected);
   if (actual === expected) {
-    console.log('passed');
+    console.log(`passed [${testName}]`);
   } else {
     console.log(`FAILED [${testName}] Expected ${expected}, but got ${actual}`);
   }
